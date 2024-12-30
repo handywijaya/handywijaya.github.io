@@ -1,0 +1,28 @@
+@import '../../basic.scss';
+
+html {
+  scroll-behavior: smooth;
+}
+
+.Home {
+  padding: 10px;
+  line-height: 1.5;
+}
+
+.AlbumContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.8rem;
+}
+
+@media (max-width: $pc-width) {
+  .Home {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
