@@ -1,4 +1,5 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom';
 import Header from '../Header'
 import Footer from '../Footer'
 import './styles.scss'
@@ -9,7 +10,7 @@ class Layout extends React.PureComponent {
             <div className="Layout">
                 <Header />
                 <div className="Content">
-                    { this.props.children }
+                    <Outlet />
                 </div>
                 <Footer />
             </div>

@@ -1,8 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import {
     BrowserRouter as Router,
-    Switch,
+    Routes,
     Route
 } from "react-router-dom"
 import './index.css'
@@ -12,25 +12,23 @@ import Home from './pages/Home'
 import Collection from './pages/Collection'
 import NotFound from './pages/NotFound'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Switch>
-        {/* <Route path="/login" component={Login} /> */}
-        <Route path="/">
-          <Layout>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/collections/:collectionName" component={Collection} />
-              <Route strict component={NotFound} />
-            </Switch>
-          </Layout>
-        </Route>
-      </Switch>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <Router>
+        <Routes>
+          <Route path ="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/collections/:collectionName" element={<Collection />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Router>
+    </React.StrictMode>
+  );
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
