@@ -3,8 +3,8 @@ This static website was made while sunbathing :satisfied:
 Check it out at [handywijaya.github.io](https://handywijaya.github.io)!
 
 # How to Run in Local
-1. `yarn install`
-1. `yarn start`
+1. `npm install`
+1. `npm start`
 
 # Credits
 1. [React](https://reactjs.org) and [Create React App](https://github.com/facebook/create-react-app) as quick bootstrapper of the project.
