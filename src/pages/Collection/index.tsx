@@ -18,7 +18,10 @@ const Collection: React.FC = () => {
   useEffect(() => {
     if (!collection) {
       navigate('/not-found')
+      return
     }
+
+    document.title = Constant.BASE_TITLE + " | " + collection.title
   }, [collection, navigate])
 
   const backToHome = () => {

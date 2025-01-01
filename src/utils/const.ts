@@ -1,6 +1,8 @@
 import { Collections, CollectionImageType } from '../interfaces/Collections'
 
 class Constant {
+  public static readonly BASE_TITLE:string = "My Travel Album"
+
   public static readonly COLLECTIONS:Collections = {
     "refreshing-bali-2020": {
       id: 'refreshing-bali-2020',

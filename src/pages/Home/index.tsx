@@ -13,6 +13,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     initCollections()
+    document.title = Constant.BASE_TITLE + " | Home"
   }, [])
 
   const initCollections = () => {
