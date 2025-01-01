@@ -486,8 +486,8 @@ class Constant {
         {
           title: 'The Marina Bay Sands Area',
           caption: 'When...',
-          url: 'https://i.imgur.com/6sFay6K.jpeg',
-          previewUrl: 'https://i.imgur.com/6sFay6Km.jpeg',
+          url: 'https://i.imgur.com/RM8pera.jpeg',
+          previewUrl: 'https://i.imgur.com/RM8peram.jpg',
           type: CollectionImageType.LANDSCAPE
         },
         {
