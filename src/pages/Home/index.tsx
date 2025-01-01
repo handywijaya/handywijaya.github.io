@@ -4,6 +4,7 @@ import './styles.scss'
 import { Collection } from '../../interfaces/Collections'
 
 import Constant from '../../utils/const'
+import { withNavigate } from '../../utils/routes'
 import PreviewAlbum from '../../components/PreviewAlbum'
 
 // need to pass <any> to get acccess props' values
@@ -26,9 +27,8 @@ class Home extends React.PureComponent<any> {
   }
 
   openCollection (collectionPath: string) {
-    console.log('this', this)
-    const { history } = this.props
-    history.push(collectionPath)
+    const { navigate } = this.props
+    navigate(collectionPath)
   }
 
   renderCollection (collection: Collection, key: number) {
@@ -53,4 +53,4 @@ class Home extends React.PureComponent<any> {
   }
 }
 
-export default Home
+export default withNavigate(Home)

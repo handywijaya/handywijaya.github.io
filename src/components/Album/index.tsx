@@ -67,15 +67,14 @@ class Album extends React.Component<Props, any> {
 
   getFrameElement (key: number, collectionId: string, url: string, previewUrl: string, caption: string, title: string, imageType: CollectionImageType, alt: string, bgColor:string) {
     return (
-      // <div key={key} className={"Album-pages-img"}>
-        <img
-          src={previewUrl}
-          onMouseMove={(e) => this.onFrameHover(e, title, bgColor)}
-          onMouseOut={() => this.onFrameOut()}
-          className={cn("Image", imageType === CollectionImageType.LANDSCAPE ? "Image-landscape" : "Image-portrait")}
-          alt={alt}
-          onClick={() => {this.openImage(url)}} />
-      // </div>
+      <img
+        key={key}
+        src={previewUrl}
+        onMouseMove={(e) => this.onFrameHover(e, title, bgColor)}
+        onMouseOut={() => this.onFrameOut()}
+        className={cn("Image", imageType === CollectionImageType.LANDSCAPE ? "Image-landscape" : "Image-portrait")}
+        alt={alt}
+        onClick={() => {this.openImage(url)}} />
     )
   }
 
