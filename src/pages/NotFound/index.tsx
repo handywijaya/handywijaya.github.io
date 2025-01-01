@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.scss'
 
-function NotFound() {
+const NotFound: React.FC = () => {
     return (
         <div className="Notfound">
             <h2>Sorry, the page is not created yet.</h2>

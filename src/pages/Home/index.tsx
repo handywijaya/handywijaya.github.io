@@ -1,56 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles.scss'
+import { useNavigate } from 'react-router-dom';
 
 import { Collection } from '../../interfaces/Collections'
 
 import Constant from '../../utils/const'
-import { withNavigate } from '../../utils/routes'
 import PreviewAlbum from '../../components/PreviewAlbum'
 
-// need to pass <any> to get acccess props' values
-class Home extends React.PureComponent<any> {
-  collections: Array<Collection>
+const Home: React.FC = () => {
+  const [collections, setCollections] = useState<Array<Collection>>([])
+  const navigate = useNavigate();
 
-  constructor (props: any) {
-    super(props)
+  useEffect(() => {
+    initCollections()
+  }, [])
 
-    this.collections = []
-
-    this.initCollections()
-  }
-
-  initCollections () {
-    this.collections = []
+  const initCollections = () => {
+    const collectionsArray: Array<Collection> = []
     Object.keys(Constant.COLLECTIONS).forEach((collectionName: string) => {
-      this.collections.push(Constant.COLLECTIONS[collectionName])
+      collectionsArray.push(Constant.COLLECTIONS[collectionName])
     })
+    setCollections(collectionsArray)
   }
 
-  openCollection (collectionPath: string) {
-    const { navigate } = this.props
+  const openCollection = (collectionPath: string) => {
     navigate(collectionPath)
   }
 
-  renderCollection (collection: Collection, key: number) {
-    return (
-      <PreviewAlbum
-        key={key}
-        collection={collection}
-        onOpenCollection={(collectionPath) => this.openCollection(collectionPath)} />
-    )
-  }
+  const renderCollection = (collection: Collection, key: number) => (
+    <PreviewAlbum
+      key={key}
+      collection={collection}
+      onOpenCollection={(collectionPath) => openCollection(collectionPath)} />
+  )
 
-  render () {
-    return(
-      <div className="Home">
-        <div className="AlbumContainer">
-          {
-            this.collections.map((c, i) => this.renderCollection(c, i))
-          }
-        </div>
+  return (
+    <div className="Home">
+      <div className="AlbumContainer">
+        {
+          collections.map((c, i) => renderCollection(c, i))
+        }
       </div>
-    )
-  }
+    </div>
+  )
 }
 
-export default withNavigate(Home)
+export default Home

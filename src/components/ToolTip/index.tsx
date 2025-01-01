@@ -11,20 +11,16 @@ interface Props {
   bgColor: string
 }
 
-class ToolTip extends React.Component<Props> {
-  render () {
-    const { show, message, mouseX, mouseY, bgColor } = this.props
-
-    return (
-      <div className="ToolTip"
-        style={{top: (mouseY + 5) + 'px', left: (mouseX + 5) + 'px'}}>
-        <PopupMessage
-          show={show}
-          message={message}
-          bgColor={'linear-gradient(#fff, ' + bgColor + ')'} />
-      </div>
-    )
-  }
+const ToolTip: React.FC<Props> = ({ show, message, mouseX, mouseY, bgColor }) => {
+  return (
+    <div className="ToolTip"
+      style={{ top: (mouseY + 5) + 'px', left: (mouseX + 5) + 'px' }}>
+      <PopupMessage
+        show={show}
+        message={message}
+        bgColor={'linear-gradient(#fff, ' + bgColor + ')'} />
+    </div>
+  )
 }
 
 export default ToolTip

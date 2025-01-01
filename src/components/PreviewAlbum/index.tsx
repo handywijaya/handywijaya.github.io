@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import './styles.scss'
 import cn from 'classnames'
 
@@ -11,113 +11,88 @@ interface Props {
   onOpenCollection: (collectionPath: string) => void
 }
 
-class Album extends React.Component<Props, any> {
-  public static defaultProps = {
-      onOpenCollection: () => {}
-  }
-  popupTimeout?: NodeJS.Timeout
+const Album: React.FC<Props> = ({ collection, onOpenCollection = () => {} }) => {
+  const [popup, setPopup] = useState({
+    show: false,
+    caption: '',
+    x: 0,
+    y: 0,
+    bgColor: 'white'
+  })
 
-  constructor (props:any) {
-    super(props)
+  const popupTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
 
-    this.state = {
-      popup: {
-        show: false,
-        caption: '',
-        x: 0,
-        y: 0,
-        bgColor: 'white'
-      }
-    }
-    this.popupTimeout = undefined
-  }
-
-  openCollection (collectionId: string) {
-    const { onOpenCollection } = this.props
+  const openCollection = (collectionId: string) => {
     onOpenCollection('/collections/' + collectionId)
   }
 
-  openImage (imageUrl: string) {
+  const openImage = (imageUrl: string) => {
     window.open(imageUrl, '_blank')
   }
 
-  showPopup (caption: string, x: number, y: number, bgColor: string) {
-    let { popup } = this.state
-    popup.show = true
-    popup.caption = caption
-    popup.x = x
-    popup.y = y
-    popup.bgColor = bgColor
-    this.setState({ popup })
+  const showPopup = (caption: string, x: number, y: number, bgColor: string) => {
+    setPopup({ show: true, caption, x, y, bgColor })
   }
 
-  hidePopup () {
-    let { popup } = this.state
-    popup.show = false
-    this.setState({ popup })
+  const hidePopup = () => {
+    setPopup(prevState => ({ ...prevState, show: false }))
   }
 
-  onFrameHover (e:any, caption: string, bgColor: string) {
-    this.onFrameOut()
+  const onFrameHover = (e: React.MouseEvent, caption: string, bgColor: string) => {
+    onFrameOut()
     
     const x = e.clientX
     const y = e.clientY
-    this.popupTimeout = setTimeout(() => {
-      this.showPopup(caption, x, y, bgColor)
+    if (popupTimeoutRef.current) {
+      clearTimeout(popupTimeoutRef.current)
+    }
+    popupTimeoutRef.current = setTimeout(() => {
+      showPopup(caption, x, y, bgColor)
     }, 125)
   }
 
-  onFrameOut () {
-    if (this.popupTimeout) {
-      clearTimeout(this.popupTimeout)
+  const onFrameOut = () => {
+    if (popupTimeoutRef.current) {
+      clearTimeout(popupTimeoutRef.current)
     }
-    this.hidePopup()
+    hidePopup()
   }
 
-  renderPreviewImages (collection: Collection) {
-    let elements:Array<any> = []
+  const renderPreviewImages = useCallback((collection: Collection) => {
     const maxImagePerRow = 2
-
-    for (let i = 0; i < maxImagePerRow; i++) {
-      let collectionImage = collection.images[i]
-      elements.push(
-        <img key={i} 
+    return collection.images.slice(0, maxImagePerRow).map((collectionImage, index) => (
+      <img
+        key={index}
         src={collectionImage.previewUrl}
-        onMouseMove={(e) => this.onFrameHover(e, collectionImage.caption, collection.popupColor)}
-        onMouseOut={() => this.onFrameOut()}
+        onMouseMove={(e) => onFrameHover(e, collectionImage.caption, collection.popupColor)}
+        onMouseOut={onFrameOut}
         className={cn("PreviewImage", collectionImage.type === CollectionImageType.LANDSCAPE ? "PreviewImage-landscape" : "PreviewImage-portrait")}
         alt={collectionImage.title}
-        onClick={() => {this.openImage(collectionImage.url)}} />
-      )
-    }
+        onClick={() => openImage(collectionImage.url)}
+      />
+    ))
+  }, [])
 
-    return elements
-  }
+  const theme = "Theme-" + collection.id
 
-  render () {
-    const { popup } = this.state
-    const { collection } = this.props
-    const theme = "Theme-" + collection.id
-    return (
-      <div className={cn("PreviewAlbum", theme)}>
-          {
-            this.renderPreviewImages(collection)
-          }
-          
-          <h2 className="PreviewAlbum-title">{collection.title}</h2>
-          <p className="PreviewAlbum-caption">{collection.caption}</p>
-          <div className={cn("PreviewAlbum-pages-more", theme + "-button")} onClick={() => {this.openCollection(collection.id)}}>
-            View Full Album
-          </div>
-          <ToolTip
-            show={popup.show}
-            message={popup.caption}
-            mouseX={popup.x}
-            mouseY={popup.y}
-            bgColor={popup.bgColor} />
+  return (
+    <div className={cn("PreviewAlbum", theme)}>
+      { renderPreviewImages(collection) }
+      
+      <h2 className="PreviewAlbum-title">{collection.title}</h2>
+      <p className="PreviewAlbum-caption">{collection.caption}</p>
+      <div className={cn("PreviewAlbum-pages-more", theme + "-button")} onClick={() => openCollection(collection.id)}>
+        View Full Album
       </div>
-    )
-  }
+      <ToolTip
+        show={popup.show}
+        message={popup.caption}
+        mouseX={popup.x}
+        mouseY={popup.y}
+        bgColor={popup.bgColor}
+      />
+    </div>
+  )
 }
 
 export default Album

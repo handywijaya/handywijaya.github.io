@@ -8,19 +8,17 @@ interface Props {
   bgColor: string
 }
 
-class PopupMessage extends React.Component<Props> {
-  render () {
-    const { show, message, bgColor } = this.props
-    const bg = bgColor || 'transparent'
+const PopupMessage: React.FC<Props> = ({ show, message, bgColor }) => {
+  const bg = bgColor || 'transparent'
 
-    return (
-      <div
-        className={cn("PopupMessage", show ? "PopupMessage-showed" : "PopupMessage-hidden")}
-        style={{background: bg}}>
-        { message }
-      </div>
-    )
-  }
+  return (
+    <div
+      className={cn('PopupMessage', show ? 'PopupMessage-showed' : 'PopupMessage-hidden')}
+      style={{ background: bg }}
+    >
+      {message}
+    </div>
+  )
 }
 
 export default PopupMessage
