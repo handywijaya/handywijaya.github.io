@@ -2,7 +2,7 @@ This static website was made while sunbathing :satisfied:
 
 Check it out at [handywijaya.github.io](https://handywijaya.github.io)!
 
-## How to Run in Local
+# How to Run in Local
 1. `yarn install`
 1. `yarn start`
 
