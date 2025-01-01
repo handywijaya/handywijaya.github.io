@@ -1,73 +1,76 @@
-import React, { useState, useCallback } from 'react'
-import './styles.scss'
+import React, { useState, useRef, useCallback } from 'react';
+import './styles.scss';
 
-import PopupMessage from '../../components/PopupMessage'
+import PopupMessage from '../../components/PopupMessage';
 
-import profile from './profile.jpg'
-import gmail from './gmail.svg'
-import linkedIn from './linkedIn.svg'
-import facebook from './facebook.svg'
-import instagram from './instagram.svg'
+import profile from './profile.jpg';
+import gmail from './gmail.svg';
+import linkedIn from './linkedIn.svg';
+import facebook from './facebook.svg';
+import instagram from './instagram.svg';
 
 const Footer: React.FC = () => {
   const [copyBalloon, setCopyBalloon] = useState<{ shown: boolean, text: string }>({
     shown: false,
-    text: 'Click to copy'
-  })
+    text: 'Click to copy',
+  });
 
-  const email = 'handy.wijaya.p@gmail.com'
-  const emailCopiedText = 'Copied!'
-  const timeoutCopyBalloon = React.useRef<NodeJS.Timeout | null>(null)
+  const email = 'handy.wijaya.p@gmail.com';
+  const emailCopiedText = 'Copied!';
+  const timeoutCopyBalloon = useRef<NodeJS.Timeout | null>(null);
 
-  const toggleCopyBalloon = (value: boolean, text?: string) => {
-    setCopyBalloon({ shown: value, text: text || copyBalloon.text })
+  const toggleCopyBalloon = useCallback((value: boolean, text?: string) => {
+    setCopyBalloon((prev) => ({
+      shown: value,
+      text: text || prev.text,
+    }));
 
     if (!value && timeoutCopyBalloon.current) {
-      clearTimeout(timeoutCopyBalloon.current)
-      timeoutCopyBalloon.current = null
+      clearTimeout(timeoutCopyBalloon.current);
+      timeoutCopyBalloon.current = null;
     }
-  }
+  }, []);
 
   const copyEmail = useCallback(() => {
-    const textArea = document.createElement("input")
-    textArea.style.position = 'fixed'
-    textArea.style.top = '0px'
-    textArea.style.left = 'calc(100vw - 50%)'
-    textArea.style.zIndex = '-999'
+    const textArea = document.createElement('input');
+    textArea.style.position = 'fixed';
+    textArea.style.top = '0px';
+    textArea.style.left = 'calc(100vw - 50%)';
+    textArea.style.zIndex = '-999';
 
-    textArea.value = email
-    document.body.appendChild(textArea)
+    textArea.value = email;
+    document.body.appendChild(textArea);
 
-    textArea.focus()
-    textArea.select()
+    textArea.focus();
+    textArea.select();
 
     try {
-      document.execCommand('copy')
-      toggleCopyBalloon(true, emailCopiedText)
+      document.execCommand('copy');
+      toggleCopyBalloon(true, emailCopiedText);
 
       timeoutCopyBalloon.current = setTimeout(() => {
-        toggleCopyBalloon(false, emailCopiedText)
-      }, 1500)
+        toggleCopyBalloon(false);
+      }, 1500);
     } catch (err) {
-      toggleCopyBalloon(true, 'Oops cannot copy :(')
+      toggleCopyBalloon(true, 'Oops cannot copy :(');
     }
 
-    document.body.removeChild(textArea)
-  }, [email])
+    document.body.removeChild(textArea);
+  }, [email, emailCopiedText, toggleCopyBalloon]);
 
-  const hoverEmail = () => {
+  const hoverEmail = useCallback(() => {
     if (!timeoutCopyBalloon.current) {
-      toggleCopyBalloon(true, 'Click to copy')
+      toggleCopyBalloon(true, 'Click to copy');
     }
-  }
+  }, [toggleCopyBalloon]);
 
-  const hoverEmailLeave = () => {
-    toggleCopyBalloon(false)
-  }
+  const hoverEmailLeave = useCallback(() => {
+    toggleCopyBalloon(false);
+  }, [toggleCopyBalloon]);
 
-  const openLinkedIn = () => window.open('https://www.linkedin.com/in/handy-wijaya-prajitno-a980b0125', '_blank')
-  const openFb = () => window.open('https://www.facebook.com/handy.wijaya.p', '_blank')
-  const openIg = () => window.open('https://www.instagram.com/handywijaya_', '_blank')
+  const openLinkedIn = () => window.open('https://www.linkedin.com/in/handy-wijaya-prajitno-a980b0125', '_blank');
+  const openFb = () => window.open('https://www.facebook.com/handy.wijaya.p', '_blank');
+  const openIg = () => window.open('https://www.instagram.com/handywijaya_', '_blank');
 
   return (
     <div className="Footer">
@@ -101,7 +104,7 @@ const Footer: React.FC = () => {
         © Handy, 2024
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
