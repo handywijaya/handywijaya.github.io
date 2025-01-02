@@ -1,4 +1,4 @@
-@import '../../basic.scss';
+@use '../../basic.scss' as basic;
 
 .Album {
   margin-bottom: 20px;
@@ -40,7 +40,7 @@
   }
 }
 
-@media (min-width: $pc-width) {
+@media (min-width: basic.$pc-width) {
   .Album-pages {
       grid-template-columns: repeat(3, 1fr);
   }

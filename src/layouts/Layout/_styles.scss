@@ -1,4 +1,4 @@
-@import '../../basic.scss';
+@use '../../basic.scss' as basic;
 
 .Layout {  
   background: linear-gradient(175deg, #fff, #c5edf8);
@@ -7,7 +7,7 @@
 .Content {
   // 1px for border, 2 times header padding for top and bottom
   // another 1px for footer excess
-  min-height: calc( 100vh - #{$header-height} - 1px - #{$header-padding} - #{$header-padding} - #{$footer-height} - 1px );
+  min-height: calc( 100vh - #{basic.$header-height} - 1px - #{basic.$header-padding} - #{basic.$header-padding} - #{basic.$footer-height} - 1px );
   display: flex;
   flex-direction: column;
 }

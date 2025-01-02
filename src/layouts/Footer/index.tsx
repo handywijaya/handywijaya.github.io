@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import './styles.scss';
+import './_styles.scss';
 
 import PopupMessage from '../../components/PopupMessage';
 

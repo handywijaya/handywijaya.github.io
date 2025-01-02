@@ -1,4 +1,4 @@
-@import '../../basic.scss';
+@use '../../basic.scss' as basic;
 
 html {
   scroll-behavior: smooth;
@@ -20,7 +20,7 @@ html {
   padding: 0.8rem;
 }
 
-@media (max-width: $pc-width) {
+@media (max-width: basic.$pc-width) {
   .Home {
     margin: 0 auto;
     text-align: center;

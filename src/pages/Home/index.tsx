@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './styles.scss'
+import './_styles.scss';
 import { useNavigate } from 'react-router-dom';
 
 import { Collection } from '../../interfaces/Collections'

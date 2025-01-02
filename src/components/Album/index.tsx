@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import './styles.scss'
+import './_styles.scss';
 import cn from 'classnames'
 
 import { Collection, CollectionImage, CollectionImageType } from '../../interfaces/Collections'

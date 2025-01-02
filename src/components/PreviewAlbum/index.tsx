@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import './styles.scss';
+import './_styles.scss';
+import '../../_theme.scss';
 import cn from 'classnames';
 
 import { Collection, CollectionImageType } from '../../interfaces/Collections';
@@ -10,6 +11,8 @@ interface Props {
   onOpenCollection: (collectionPath: string) => void;
 }
 
+// TODO: ganti semua jadi _scss
+
 const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
   const [popup, setPopup] = React.useState({
     show: false,
@@ -18,11 +21,18 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
     y: 0,
     bgColor: 'white',
   });
+  // const result = extract.renderSync({
+  //   file: '../../theme.scss'
+  // })
 
   const onFrameHover = useCallback(
-    (e: React.MouseEvent<HTMLImageElement>, caption: string, bgColor: string) => {
+    (e: React.MouseEvent<HTMLImageElement>, caption: string, bgColor: string, collectionId: string) => {
       const x = e.clientX;
       const y = e.clientY;
+
+      // console.log(styles.colors[collectionId])
+      // console.log('test', `${collectionId}`)
+      // console.log('test2', theme[collectionId])
 
       setPopup({
         show: true,
@@ -57,7 +67,7 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
       <img
         key={i}
         src={collectionImage.previewUrl}
-        onMouseMove={(e) => onFrameHover(e, collectionImage.caption, collection.popupColor)}
+        onMouseMove={(e) => onFrameHover(e, collectionImage.caption, collection.popupColor, collection.id)}
         onMouseOut={onFrameOut}
         className={cn(
           'PreviewImage',
@@ -78,7 +88,7 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
       <h2 className="PreviewAlbum-title">{collection.title}</h2>
       <p className="PreviewAlbum-caption">{collection.caption}</p>
       <div
-        className={cn('PreviewAlbum-pages-more', `${theme}-button`)}
+        className={cn('PreviewAlbum-pages-button', `${theme}-button`)}
         onClick={() => openCollection(collection.id)}
       >
         View Full Album

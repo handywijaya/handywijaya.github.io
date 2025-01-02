@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import './styles.scss'
+import './_styles.scss';
+import '../../_theme.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import cn from 'classnames'
@@ -37,19 +38,20 @@ const Collection: React.FC = () => {
     return null // Avoid rendering content if collection is invalid
   }
 
+  const theme = 'Theme-' + collection.id
   const collectionClassName = cn(
     'Collection',
-    'Collection-theme-' + collection.id
+    theme
   )
   const homeClassName = cn(
     'Collection-button',
     'Collection-home',
-    'Collection-button-' + collection.id
+    theme + '-button'
   )
   const topClassName = cn(
     'Collection-button',
     'Collection-top',
-    'Collection-button-' + collection.id
+    theme + '-button'
   )
 
   return (

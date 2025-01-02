@@ -1,4 +1,5 @@
 import { Collections, CollectionImageType } from '../interfaces/Collections'
+import '../_theme.scss'
 
 class Constant {
   public static readonly BASE_TITLE:string = "My Travel Album"
@@ -8,7 +9,7 @@ class Constant {
       id: 'refreshing-bali-2020',
       title: 'Refreshing Bali - 2020',
       caption: 'A moment to enjoy Bali and Nusa Lembongan. Right before the pandemic!',
-      popupColor: '#d1e4e2', // see basic.scss
+      popupColor: '#d1e4e2', // need to be in sync with _theme.scss
       previewImageIdx: [0, 1],
       images: [
         {
@@ -164,7 +165,7 @@ class Constant {
       id: 'luxury-bali-2019',
       title: 'Luxury Bali - 2019',
       caption: 'Exploring the luxuriousness of Bali. Paradise awaits!',
-      popupColor: '#f5f5dc', // see basic.scss
+      popupColor: '#f5f5dc', // need to be in sync with _theme.scss
       previewImageIdx: [1, 2],
       images: [
         {
@@ -228,7 +229,7 @@ class Constant {
       id: 'spring-japan-2018',
       title: 'Spring Japan - 2018',
       caption: 'Traveling with my brother has never gone this far! Sakura, we are coming!!!',
-      popupColor: '#ffd7e8', // see basic.scss
+      popupColor: '#ffd7e8', // need to be in sync with _theme.scss
       previewImageIdx: [4, 31],
       images: [
         {
@@ -468,7 +469,7 @@ class Constant {
       id: 'explore-singapore-2018',
       title: 'Explore Singapore - 2018',
       caption: 'First time abroad with my close friends! Excited to the max!!',
-      popupColor: '#f0f0f0', // see basic.scss
+      popupColor: '#f0f0f0', // need to be in sync with _theme.scss
       previewImageIdx: [0, 2],
       images: [
         {

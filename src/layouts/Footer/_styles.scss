@@ -1,10 +1,10 @@
-@import '../../basic.scss';
+@use '../../basic.scss' as basic;
 
 .Footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: $footer-height;
+  min-height: basic.$footer-height;
   box-sizing: border-box;
   padding: 20px;
   background: black;
