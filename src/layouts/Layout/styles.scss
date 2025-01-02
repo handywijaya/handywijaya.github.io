@@ -8,5 +8,6 @@
   // 1px for border, 2 times header padding for top and bottom
   // another 1px for footer excess
   min-height: calc( 100vh - #{$header-height} - 1px - #{$header-padding} - #{$header-padding} - #{$footer-height} - 1px );
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
