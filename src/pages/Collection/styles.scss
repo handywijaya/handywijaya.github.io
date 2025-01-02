@@ -2,8 +2,10 @@
 
 .Collection {
   padding: 32px;
+  padding-bottom: 72px;
   line-height: 1.5;
   flex: 1;
+  position: relative;
 
   &-button {
     cursor: pointer;
@@ -68,7 +70,8 @@
   }
 
   &-top {
-    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
   }
 
   &-theme {
