@@ -73,7 +73,7 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
   }, [collection, onFrameHover, onFrameOut, openImage]);
 
   const theme = `Theme-${collection.id}`;
-  const className = cn('border border-gray-300 rounded-lg shadow-lg overflow-hidden max-w-[300px] text-center mb-[20px]', theme)
+  const className = cn('border border-gray-300 rounded-lg shadow-lg overflow-hidden max-w-[300px] text-center mb-[20px]', `${theme}-preview`)
   const btnClassName = cn('button my-[16px]', `${theme}-button`)
   return (
     <div className={className}>

@@ -3,27 +3,31 @@
 $colors: (
   refreshing-bali-2020: (
     base: #d1e4e2, // need to be in sync with utils/const.ts
+    base2: #f4e1c1,
     button: #d2691e,
     button-hover: #8b4513
   ),
   luxury-bali-2019: (
     base: #f5f5dc, // need to be in sync with utils/const.ts
+    base2: #87ceeb,
     button: #6b8e23,
     button-hover: #556b2f
   ),
   spring-japan-2018: (
     base: #ffd7e8, // need to be in sync with utils/const.ts
+    base2: #a2c8f7,
     button: #c2185b,
     button-hover: #a3154a
   ),
   ora-beach-2018: (
-    base: #ffd1b3, // need to be in sync with utils/const.ts
-    base2: #a0d8ef,
+    base: #a0d8ef, // need to be in sync with utils/const.ts
+    base2: #ffd1b3,
     button: #4a90e2,
-    button-hover: #ff8666
+    button-hover: #3b7bbf,
   ),
   explore-singapore-2018: (
     base: #f0f0f0, // need to be in sync with utils/const.ts
+    base2: #98fb98,
     button: #32cd32,
     button-hover: #228b22
   )
@@ -32,8 +36,11 @@ $colors: (
 .Theme {
   @each $theme-name, $theme-values in $colors {
     &-#{$theme-name} {
-      background: map.get($theme-values, base);
-      background: radial-gradient(ellipse, map.get($theme-values, base), map.get($theme-values, base2));
+      background: radial-gradient(closest-side, map.get($theme-values, base2), map.get($theme-values, base));
+      
+      &-preview {
+        background: map.get($theme-values, base);
+      }
 
       &-button {
         background: map.get($theme-values, button);

@@ -8,7 +8,7 @@ class Constant {
     "refreshing-bali-2020": {
       id: 'refreshing-bali-2020',
       title: 'Refreshing Bali - 2020',
-      caption: 'A moment to enjoy Bali and Nusa Lembongan. Right before the pandemic!',
+      caption: 'Enjoying the beauty of Bali and Nusa Lembongan, just before the pandemic! 🏖️',
       popupColor: '#d1e4e2', // need to be in sync with _theme.scss
       previewImageIdx: [0, 1],
       images: [
@@ -164,7 +164,7 @@ class Constant {
     "luxury-bali-2019": {
       id: 'luxury-bali-2019',
       title: 'Luxury Bali - 2019',
-      caption: 'Exploring the luxuriousness of Bali. Paradise awaits!',
+      caption: 'Exploring the luxuriousness of Bali. Paradise awaits! 🌾🌿',
       popupColor: '#f5f5dc', // need to be in sync with _theme.scss
       previewImageIdx: [1, 2],
       images: [
@@ -228,7 +228,7 @@ class Constant {
     "spring-japan-2018": {
       id: 'spring-japan-2018',
       title: 'Spring Japan - 2018',
-      caption: 'Traveling with my brother has never gone this far! Sakura, we are coming!!!',
+      caption: 'Springtime adventures in Osaka, Kyoto, and Tokyo with my brother 🌸',
       popupColor: '#ffd7e8', // need to be in sync with _theme.scss
       previewImageIdx: [4, 31],
       images: [
@@ -596,7 +596,7 @@ class Constant {
     "explore-singapore-2018": {
       id: 'explore-singapore-2018',
       title: 'Explore Singapore - 2018',
-      caption: 'First time abroad with my close friends! Excited to the max!!',
+      caption: 'First time abroad with my close friends, exploring the wonders of Singapore! 🎢',
       popupColor: '#f0f0f0', // need to be in sync with _theme.scss
       previewImageIdx: [0, 2],
       images: [
