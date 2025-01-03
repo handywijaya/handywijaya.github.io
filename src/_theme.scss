@@ -31,7 +31,7 @@ $colors: (
       &-button {
         background: map.get($theme-values, button);
         color: white;
-        transition: background-color 0.3s, transform 0.3s;
+        transition: background-color 0.125s, transform 0.125s;
 
         &:hover {
           background-color: map.get($theme-values, button-hover);

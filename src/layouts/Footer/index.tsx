@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import './_styles.scss';
+import './_styles.css';
 
 import PopupMessage from '../../components/PopupMessage';
 
@@ -73,34 +73,29 @@ const Footer: React.FC = () => {
   const openIg = () => window.open('https://www.instagram.com/handywijaya_', '_blank');
 
   return (
-    <div className="Footer">
-      <div className="Footer-content">
-        <div className="Footer-profpic">
-          <img className="Footer-profpic-img" src={profile} alt="profile" />
+    <div className="flex justify-between items-center 
+      min-h-footer-height box-border p-[20px] 
+      bg-black shadow-black text-white">
+      <div className="flex justify-center">
+        <div>
+          <img className="w-[100px]" src={profile} alt="profile" />
         </div>
-        <div className="Footer-contacts">
-          <div className="Footer-contacts-name">Handy Wijaya</div>
-          <div className="Footer-contacts-caption">Traveling is my passion. Sports is my nutrient.</div>
-          <div className="Footer-contacts-linebreak" />
-          <div className="Footer-contacts-ic">
-            <img
-              className="Footer-contacts-ic-gmail"
-              src={gmail}
-              alt="gmail"
-              onMouseOver={hoverEmail}
-              onMouseLeave={hoverEmailLeave}
-              onClick={copyEmail}
-            />
-            <img className="Footer-contacts-ic-linkedIn" src={linkedIn} alt="linkedIn" onClick={openLinkedIn} />
-            <img className="Footer-contacts-ic-fb" src={facebook} alt="facebook" onClick={openFb} />
-            <img className="Footer-contacts-ic-ig" src={instagram} alt="instagram" onClick={openIg} />
-            <div className="Footer-popupMessage">
+        <div className="ml-[10px] flex flex-col justify-center relative">
+          <div className="font-normal">Handy Wijaya</div>
+          <div className="font-extralight">Traveling is my passion. Sports is my nutrient.</div>
+          <div className="border-t border-t-[rgba(0,0,0,0.5)] shadow-white my-[10px]" />
+          <div className="ic">
+            <img src={gmail} alt="gmail" onMouseOver={hoverEmail} onMouseLeave={hoverEmailLeave} onClick={copyEmail} />
+            <img src={linkedIn} alt="linkedIn" onClick={openLinkedIn} />
+            <img src={facebook} alt="facebook" onClick={openFb} />
+            <img src={instagram} alt="instagram" onClick={openIg} />
+            <div className="absolute text-black">
               <PopupMessage show={copyBalloon.shown} message={copyBalloon.text} bgColor="white" />
             </div>
           </div>
         </div>
       </div>
-      <div className="Footer-copyright">
+      <div className="text-center text-[12px] mt-[10px]">
         © Handy, 2024
       </div>
     </div>
