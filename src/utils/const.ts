@@ -465,6 +465,134 @@ class Constant {
         }        
       ]
     },
+    "ora-beach-2018": {
+      id: 'ora-beach-2018',
+      title: 'Ora Beach - 2018',
+      caption: 'Serene vibes and turquoise dreams in Eastern of Indonesia 🌊✨',
+      popupColor: '#a0d8ef', // need to be in sync with _theme.scss
+      previewImageIdx: [14, 15],
+      images: [
+        {
+          title: 'Saleman Port',
+          caption: 'Port to depart to Ora Beach',
+          url: 'https://i.imgur.com/PoamBSL.jpg',
+          previewUrl: 'https://i.imgur.com/PoamBSLm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Evening near Saleman Port',
+          caption: 'Evening on a field near Saleman Port',
+          url: 'https://i.imgur.com/U9gMxnq.jpg',
+          previewUrl: 'https://i.imgur.com/U9gMxnqm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Arrived at Ora Beach',
+          caption: 'Arrived at Ora Beach',
+          url: 'https://i.imgur.com/6R2Oc3d.jpg',
+          previewUrl: 'https://i.imgur.com/6R2Oc3dm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Arrived at Ora Beach!!',
+          caption: 'Arrived at Ora Beach!!',
+          url: 'https://i.imgur.com/aRlpKmU.jpg',
+          previewUrl: 'https://i.imgur.com/aRlpKmUm.jpg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Group Photo',
+          caption: 'Arrival Group photo',
+          url: 'https://i.imgur.com/kLnofKU.jpg',
+          previewUrl: 'https://i.imgur.com/kLnofKUm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Turqoise Dreams',
+          caption: 'Turqoise dreams',
+          url: 'https://i.imgur.com/qZGomdi.jpg',
+          previewUrl: 'https://i.imgur.com/qZGomdim.jpg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Scene 1',
+          caption: 'Scene 1',
+          url: 'https://i.imgur.com/ZVVDhn7.jpg',
+          previewUrl: 'https://i.imgur.com/ZVVDhn7m.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Scene 2',
+          caption: 'Scene 2',
+          url: 'https://i.imgur.com/hPlDDO6.jpg',
+          previewUrl: 'https://i.imgur.com/hPlDDO6m.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Scene 3',
+          caption: 'Scene 3',
+          url: 'https://i.imgur.com/uONVEjI.jpg',
+          previewUrl: 'https://i.imgur.com/uONVEjIm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Sunset Chaser 1',
+          caption: 'Sunset chaser 1',
+          url: 'https://i.imgur.com/z4VnidS.jpg',
+          previewUrl: 'https://i.imgur.com/z4VnidSm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Sunset Chaser 2',
+          caption: 'Sunset chaser 2',
+          url: 'https://i.imgur.com/l2gzjQq.jpg',
+          previewUrl: 'https://i.imgur.com/l2gzjQqm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Sunset Chaser 3',
+          caption: 'Sunset chaser 3',
+          url: 'https://i.imgur.com/w8QJdTD.jpg',
+          previewUrl: 'https://i.imgur.com/w8QJdTDm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Hotel View',
+          caption: 'Hotel view',
+          url: 'https://i.imgur.com/Hjr0nOd.jpg',
+          previewUrl: 'https://i.imgur.com/Hjr0nOdm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Is this even sea?',
+          caption: 'Is this even sea?',
+          url: 'https://i.imgur.com/Bc2AmVU.jpg',
+          previewUrl: 'https://i.imgur.com/Bc2AmVUm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Ora Cave on High Tide',
+          caption: 'Ora Cave on high tide',
+          url: 'https://i.imgur.com/Gc6fape.jpg',
+          previewUrl: 'https://i.imgur.com/Gc6fapem.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Group Photo at Ora Cave',
+          caption: 'Group photo at Ora Cave',
+          url: 'https://i.imgur.com/18zSh4i.jpg',
+          previewUrl: 'https://i.imgur.com/18zSh4im.jpg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Departure Group Photo',
+          caption: 'Departure group photo',
+          url: 'https://i.imgur.com/BZKiB1x.jpg',
+          previewUrl: 'https://i.imgur.com/BZKiB1xm.jpg',
+          type: CollectionImageType.LANDSCAPE
+        }
+      ]
+    },
     "explore-singapore-2018": {
       id: 'explore-singapore-2018',
       title: 'Explore Singapore - 2018',

@@ -16,6 +16,12 @@ $colors: (
     button: #c2185b,
     button-hover: #a3154a
   ),
+  ora-beach-2018: (
+    base: #ffd1b3, // need to be in sync with utils/const.ts
+    base2: #a0d8ef,
+    button: #4a90e2,
+    button-hover: #ff8666
+  ),
   explore-singapore-2018: (
     base: #f0f0f0, // need to be in sync with utils/const.ts
     button: #32cd32,
@@ -27,6 +33,7 @@ $colors: (
   @each $theme-name, $theme-values in $colors {
     &-#{$theme-name} {
       background: map.get($theme-values, base);
+      background: linear-gradient(to bottom, map.get($theme-values, base), map.get($theme-values, base2));
 
       &-button {
         background: map.get($theme-values, button);
