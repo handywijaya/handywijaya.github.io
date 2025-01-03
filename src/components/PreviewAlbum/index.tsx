@@ -51,24 +51,25 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
   }, []);
 
   const renderPreviewImages = useCallback(() => {
-    const maxImagePerRow = 2;
-
-    return collection.images.slice(0, maxImagePerRow).map((collectionImage, i) => (
-      <img
-        key={i}
-        src={collectionImage.previewUrl}
-        onMouseMove={(e) => onFrameHover(e, collectionImage.caption, collection.popupColor, collection.id)}
-        onMouseOut={onFrameOut}
-        className={cn(
-          'cursor-pointer transition-all duration-125 hover:opacity-90 hover:scale-105',
-          collectionImage.type === CollectionImageType.LANDSCAPE
-            ? 'w-full h-[200px]'
-            : 'h-full w-auto m-auto'
-        )}
-        alt={collectionImage.title}
-        onClick={() => openImage(collectionImage.url)}
-      />
-    ));
+    return collection.previewImageIdx.map((value, idx) => {
+      const collectionImage = collection.images[value];
+      return (
+        <img
+          key={idx}
+          src={collectionImage.previewUrl}
+          onMouseMove={(e) => onFrameHover(e, collectionImage.caption, collection.popupColor, collection.id)}
+          onMouseOut={onFrameOut}
+          className={cn(
+            'cursor-pointer transition-all duration-125 hover:opacity-90 hover:scale-105',
+            collectionImage.type === CollectionImageType.LANDSCAPE
+              ? 'w-full h-[200px]'
+              : 'h-full w-auto m-auto'
+          )}
+          alt={collectionImage.title}
+          onClick={() => openImage(collectionImage.url)}
+        />
+      );
+    });
   }, [collection, onFrameHover, onFrameOut, openImage]);
 
   const theme = `Theme-${collection.id}`;
