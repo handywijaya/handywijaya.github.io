@@ -78,13 +78,12 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
   return (
     <div className={className}>
       {renderPreviewImages()}
-      <h2 className="font-bold text-[20px]">{collection.title}</h2>
-      <p className="text-slate-500 italic text-[16px]">{collection.caption}</p>
-      <div
-        className={btnClassName}
-        onClick={() => openCollection(collection.id)}
-      >
-        View Full Album
+      <div className="px-[18px]">
+        <h2 className="font-bold text-[20px] py-[8px]">{collection.title}</h2>
+        <p className="text-slate-500 italic text-[16px]">{collection.caption}</p>
+        <div className={btnClassName} onClick={() => openCollection(collection.id)}>
+          View Full Album
+        </div>
       </div>
       <ToolTip
         show={popup.show}
