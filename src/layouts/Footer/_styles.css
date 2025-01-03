@@ -1,0 +1,3 @@
+.ic img {
+  @apply w-[20px] mr-[20px] cursor-pointer;
+}

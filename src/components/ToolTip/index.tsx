@@ -1,5 +1,4 @@
 import React from 'react'
-import './_styles.scss';
 
 import PopupMessage from '../PopupMessage'
 
@@ -13,7 +12,7 @@ interface Props {
 
 const ToolTip: React.FC<Props> = ({ show, message, mouseX, mouseY, bgColor }) => {
   return (
-    <div className="ToolTip"
+    <div className="fixed transition-opacity duration-125 ease-linear select-none pointer-events-none"
       style={{ top: (mouseY + 5) + 'px', left: (mouseX + 5) + 'px' }}>
       <PopupMessage
         show={show}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import './_styles.scss';
 import { useNavigate } from 'react-router-dom';
 
 import { Collection } from '../../interfaces/Collections'
@@ -36,8 +35,8 @@ const Home: React.FC = () => {
   )
 
   return (
-    <div className="Home">
-      <div className="AlbumContainer">
+    <div className="p-[10px] pt-[20px] leading-normal">
+      <div className="flex flex-wrap justify-center items-center content-center gap-[32px] padding-[12px]">
         {
           collections.map((c, i) => renderCollection(c, i))
         }

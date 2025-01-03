@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react'
-import './_styles.scss';
-import cn from 'classnames'
 
 import { Collection, CollectionImage, CollectionImageType } from '../../interfaces/Collections'
 
@@ -66,15 +64,15 @@ const Album: React.FC<Props> = ({ collection }) => {
     alt: string,
     bgColor: string
   ) => (
-    <img
-      key={key}
-      src={previewUrl}
-      onMouseMove={(e) => onFrameHover(e, title, bgColor)}
-      onMouseOut={onFrameOut}
-      className={cn('Image', imageType === CollectionImageType.LANDSCAPE ? 'Image-landscape' : 'Image-portrait')}
-      alt={alt}
-      onClick={() => openImage(url)}
-    />
+      <img
+        key={key}
+        src={previewUrl}
+        onMouseMove={(e) => onFrameHover(e, title, bgColor)}
+        onMouseOut={onFrameOut}
+        className="cursor-pointer rounded-lg shadow-md self-center transition-all duration-125 hover:scale-105"
+        alt={alt}
+        onClick={() => openImage(url)}
+      />
   )
 
   const renderFrames = (collectionId: string, images: Array<CollectionImage>, popupColor: string) => {
@@ -85,15 +83,19 @@ const Album: React.FC<Props> = ({ collection }) => {
   }
 
   const renderPhotoBook = (collection: Collection) => (
-    <div className="Album-pages">
+    <div className="grid justify-evenly items-center justify-items-center content-center
+    grid-cols-[repeat(auto-fit,_minmax(320px,_1fr))]
+    gap-[16px]">
       {renderFrames(collection.id, collection.images, collection.popupColor)}
     </div>
   )
 
   return (
-    <div className="Album">
-      <h2 className="Album-title">{collection.title}</h2>
-      <p className="Album-caption">{collection.caption}</p>
+    <div className="mb-[20px] text-center max-w-screen-lg m-auto">
+      <div className="mb-[20px]">
+        <h2 className="m-0 font-semibold text-[40px] drop-shadow-lg">{collection.title}</h2>
+        <p className="text-[16px] text-slate-700">{collection.caption}</p>
+      </div>
       {renderPhotoBook(collection)}
       <ToolTip
         show={popup.show}

@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import './_styles.scss';
 import '../../_theme.scss';
 import cn from 'classnames';
 
@@ -11,8 +10,6 @@ interface Props {
   onOpenCollection: (collectionPath: string) => void;
 }
 
-// TODO: ganti semua jadi _scss
-
 const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
   const [popup, setPopup] = React.useState({
     show: false,
@@ -21,18 +18,11 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
     y: 0,
     bgColor: 'white',
   });
-  // const result = extract.renderSync({
-  //   file: '../../theme.scss'
-  // })
 
   const onFrameHover = useCallback(
     (e: React.MouseEvent<HTMLImageElement>, caption: string, bgColor: string, collectionId: string) => {
       const x = e.clientX;
       const y = e.clientY;
-
-      // console.log(styles.colors[collectionId])
-      // console.log('test', `${collectionId}`)
-      // console.log('test2', theme[collectionId])
 
       setPopup({
         show: true,
@@ -70,10 +60,10 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
         onMouseMove={(e) => onFrameHover(e, collectionImage.caption, collection.popupColor, collection.id)}
         onMouseOut={onFrameOut}
         className={cn(
-          'PreviewImage',
+          'cursor-pointer transition-all duration-125 hover:opacity-90 hover:scale-105',
           collectionImage.type === CollectionImageType.LANDSCAPE
-            ? 'PreviewImage-landscape'
-            : 'PreviewImage-portrait'
+            ? 'w-full h-[200px]'
+            : 'h-full w-auto m-auto'
         )}
         alt={collectionImage.title}
         onClick={() => openImage(collectionImage.url)}
@@ -82,13 +72,15 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
   }, [collection, onFrameHover, onFrameOut, openImage]);
 
   const theme = `Theme-${collection.id}`;
+  const className = cn('border border-gray-300 rounded-lg shadow-lg overflow-hidden max-w-[300px] text-center mb-[20px]', theme)
+  const btnClassName = cn('button my-[16px]', `${theme}-button`)
   return (
-    <div className={cn('PreviewAlbum', theme)}>
+    <div className={className}>
       {renderPreviewImages()}
-      <h2 className="PreviewAlbum-title">{collection.title}</h2>
-      <p className="PreviewAlbum-caption">{collection.caption}</p>
+      <h2 className="font-bold text-[20px]">{collection.title}</h2>
+      <p className="text-slate-500 italic text-[16px]">{collection.caption}</p>
       <div
-        className={cn('PreviewAlbum-pages-button', `${theme}-button`)}
+        className={btnClassName}
         onClick={() => openCollection(collection.id)}
       >
         View Full Album
