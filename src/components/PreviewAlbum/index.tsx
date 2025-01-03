@@ -80,7 +80,7 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
       {renderPreviewImages()}
       <div className="px-[18px]">
         <h2 className="font-bold text-[20px] py-[8px]">{collection.title}</h2>
-        <p className="text-slate-500 italic text-[16px]">{collection.caption}</p>
+        <p className="text-slate-500 italic text-[16px] min-h-[75px] content-center">{collection.caption}</p>
         <div className={btnClassName} onClick={() => openCollection(collection.id)}>
           View Full Album
         </div>
