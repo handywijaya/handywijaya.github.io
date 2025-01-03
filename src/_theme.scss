@@ -33,7 +33,7 @@ $colors: (
   @each $theme-name, $theme-values in $colors {
     &-#{$theme-name} {
       background: map.get($theme-values, base);
-      background: linear-gradient(to bottom, map.get($theme-values, base), map.get($theme-values, base2));
+      background: radial-gradient(ellipse, map.get($theme-values, base), map.get($theme-values, base2));
 
       &-button {
         background: map.get($theme-values, button);
