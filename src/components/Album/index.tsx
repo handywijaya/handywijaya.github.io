@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import cn from 'classnames';
 
 import { Collection, CollectionImage, CollectionImageType } from '../../interfaces/Collections'
 
@@ -90,11 +91,14 @@ const Album: React.FC<Props> = ({ collection }) => {
     </div>
   )
 
+  const theme = `Theme-${collection.id}`;
+  const titleClassName = cn('m-0 font-semibold text-[40px] drop-shadow-lg', `${theme}-title`)
+  const captionClassName = cn('text-[16px]', `${theme}-caption`)
   return (
     <div className="mb-[20px] text-center max-w-screen-lg m-auto">
       <div className="mb-[20px]">
-        <h2 className="m-0 font-semibold text-[40px] drop-shadow-lg">{collection.title}</h2>
-        <p className="text-[16px] text-slate-700">{collection.caption}</p>
+        <h2 className={titleClassName}>{collection.title}</h2>
+        <p className={captionClassName}>{collection.caption}</p>
       </div>
       {renderPhotoBook(collection)}
       <ToolTip

@@ -5,6 +5,197 @@ class Constant {
   public static readonly BASE_TITLE:string = "My Travel Album"
 
   public static readonly COLLECTIONS:Collections = {
+    "singapore-malaysia-2024": {
+      id: 'singapore-malaysia-2024',
+      title: 'Singapore Malaysia - 2024',
+      caption: 'Exploring the wonders of Singapore and Malaysia during Christmas 2024! 🎄✨',
+      popupColor: '#2b2e4a', // need to be in sync with _theme.scss
+      previewImageIdx: [4, 21],
+      images: [
+        {
+          title: 'The Waterfall @ Garden by the Bay',
+          caption: 'The Waterfall @ Garden by the Bay',
+          url: 'https://i.imgur.com/SrMOIDQ.jpeg',
+          previewUrl: 'https://i.imgur.com/SrMOIDQm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Christmas @ Garden by the Bay',
+          caption: 'Christmas @ Garden by the Bay',
+          url: 'https://i.imgur.com/Vz3ZTP0.jpeg',
+          previewUrl: 'https://i.imgur.com/Vz3ZTP0m.jpeg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'The Top @ Garden by the Bay',
+          caption: 'The Top @ Garden by the Bay',
+          url: 'https://i.imgur.com/qmLSalF.jpeg',
+          previewUrl: 'https://i.imgur.com/qmLSalFm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Night @ Supertree Grove 1',
+          caption: 'Night @ Supertree Grove 1',
+          url: 'https://i.imgur.com/H1NdinY.jpeg',
+          previewUrl: 'https://i.imgur.com/H1NdinYm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Night @ Supertree Grove 2',
+          caption: 'Night @ Supertree Grove 2',
+          url: 'https://i.imgur.com/Yy0v4W5.jpeg',
+          previewUrl: 'https://i.imgur.com/Yy0v4W5m.jpeg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Night @ Supertree Grove 3',
+          caption: 'Night @ Supertree Grove 3',
+          url: 'https://i.imgur.com/4dOs6gQ.jpeg',
+          previewUrl: 'https://i.imgur.com/4dOs6gQm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Street view building',
+          caption: 'Wish can stay here someday',
+          url: 'https://i.imgur.com/eucSzWr.jpeg',
+          previewUrl: 'https://i.imgur.com/eucSzWrm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Dickson Nasi Lemak',
+          caption: 'One is not enough',
+          url: 'https://i.imgur.com/h2cggAW.jpeg',
+          previewUrl: 'https://i.imgur.com/h2cggAWm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'MBS and Esplanade',
+          caption: 'MBS and Esplanade',
+          url: 'https://i.imgur.com/yrmfybU.jpeg',
+          previewUrl: 'https://i.imgur.com/yrmfybUm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Orchid @ National Orchid Garden 1',
+          caption: 'Orchid @ National Orchid Garden 1',
+          url: 'https://i.imgur.com/qCI7JYs.jpeg',
+          previewUrl: 'https://i.imgur.com/qCI7JYsm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Orchid @ National Orchid Garden 2',
+          caption: 'Orchid @ National Orchid Garden 2',
+          url: 'https://i.imgur.com/9YbHXXA.jpeg',
+          previewUrl: 'https://i.imgur.com/9YbHXXAm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Orchid @ National Orchid Garden 3',
+          caption: 'Orchid @ National Orchid Garden 3',
+          url: 'https://i.imgur.com/XFJiQAc.jpeg',
+          previewUrl: 'https://i.imgur.com/XFJiQAcm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Three Meals a Day!!!',
+          caption: 'The best salted egg cuisine!!',
+          url: 'https://i.imgur.com/wVxUNbC.jpeg',
+          previewUrl: 'https://i.imgur.com/wVxUNbCm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Chirstmas Night @ Orchard',
+          caption: 'Christmas Night @ Orchard',
+          url: 'https://i.imgur.com/Gy2U5v8.jpeg',
+          previewUrl: 'https://i.imgur.com/Gy2U5v8m.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'KLCC',
+          caption: 'KLCC',
+          url: 'https://i.imgur.com/dhyEwqz.jpeg',
+          previewUrl: 'https://i.imgur.com/dhyEwqzm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Mee @ ICC Pudu',
+          caption: 'Mee @ ICC Pudu',
+          url: 'https://i.imgur.com/VegDdyH.jpeg',
+          previewUrl: 'https://i.imgur.com/VegDdyHm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Lintang @ ICC Pudu',
+          caption: 'Lintang @ ICC Pudu',
+          url: 'https://i.imgur.com/DbNxRfo.jpeg',
+          previewUrl: 'https://i.imgur.com/DbNxRfom.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Bunn Choon @ ICC Pudu',
+          caption: 'Bunn Choon @ ICC Pudu',
+          url: 'https://i.imgur.com/Pn7Tk3G.jpeg',
+          previewUrl: 'https://i.imgur.com/Pn7Tk3Gm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Batu Caves 1',
+          caption: 'Batu Caves',
+          url: 'https://i.imgur.com/7pxrYVM.jpeg',
+          previewUrl: 'https://i.imgur.com/7pxrYVMm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Char Siew Yoong',
+          caption: '4 thumbs Char Siew!',
+          url: 'https://i.imgur.com/V2MELP4.jpeg',
+          previewUrl: 'https://i.imgur.com/V2MELP4m.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Batu Caves 2',
+          caption: '300 stairs up and 300 stairs down',
+          url: 'https://i.imgur.com/OhfW4Rr.jpeg',
+          previewUrl: 'https://i.imgur.com/OhfW4Rrm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Kunafa Fingers',
+          caption: 'The dubai chocolate addict',
+          url: 'https://i.imgur.com/kF14zSl.jpeg',
+          previewUrl: 'https://i.imgur.com/kF14zSlm.jpeg',
+          type: CollectionImageType.LANDSCAPE
+        },
+        {
+          title: 'Melting Wagyu in Lot10',
+          caption: 'The most expensive is the best one!',
+          url: 'https://i.imgur.com/nfdx33h.jpeg',
+          previewUrl: 'https://i.imgur.com/nfdx33hm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'The Cable Car View @ Genting Highlands',
+          caption: 'The Cable Car View @ Genting Highlands',
+          url: 'https://i.imgur.com/2tLfdH6.jpeg',
+          previewUrl: 'https://i.imgur.com/2tLfdH6m.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Pagoda @ Genting Highlands',
+          caption: 'Pagoda @ Genting Highlands',
+          url: 'https://i.imgur.com/76LWQlT.jpeg',
+          previewUrl: 'https://i.imgur.com/76LWQlTm.jpeg',
+          type: CollectionImageType.PORTRAIT
+        },
+        {
+          title: 'Casino @ Genting Highlands',
+          caption: 'Let\'s gamble!!',
+          url: 'https://i.imgur.com/imKg3Jd.jpeg',
+          previewUrl: 'https://i.imgur.com/imKg3Jdm.jpeg',
+          type: CollectionImageType.LANDSCAPE
+        }
+      ]
+    },
     "refreshing-bali-2020": {
       id: 'refreshing-bali-2020',
       title: 'Refreshing Bali - 2020',
