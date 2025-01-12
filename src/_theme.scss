@@ -1,6 +1,14 @@
 @use 'sass:map';
 
 $colors: (
+  singapore-malaysia-2024: (
+    base: #2b2e4a, // need to be in sync with utils/const.ts
+    base2: #f8c471,
+    button: #27ae60,
+    button-hover: #1f7a4d,
+    title-color: #f4f4f9,
+    caption-color: #a3b0c6,
+  ),
   refreshing-bali-2020: (
     base: #d1e4e2, // need to be in sync with utils/const.ts
     base2: #f4e1c1,
@@ -40,6 +48,16 @@ $colors: (
       
       &-preview {
         background: map.get($theme-values, base);
+      }
+
+      &-title {
+        color: #000000;
+        color: map.get($theme-values, title-color);
+      }
+
+      &-caption {
+        color: #64748b;
+        color: map.get($theme-values, caption-color);
       }
 
       &-button {

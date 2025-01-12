@@ -74,13 +74,15 @@ const PreviewAlbum: React.FC<Props> = ({ collection, onOpenCollection }) => {
 
   const theme = `Theme-${collection.id}`;
   const className = cn('border border-gray-300 rounded-lg shadow-lg overflow-hidden max-w-[300px] text-center mb-[20px]', `${theme}-preview`)
+  const titleClassName = cn('font-bold text-[20px] py-[8px]', `${theme}-title`)
+  const captionClassName = cn('italic text-[16px] min-h-[75px] content-center', `${theme}-caption`)
   const btnClassName = cn('button my-[16px]', `${theme}-button`)
   return (
     <div className={className}>
       {renderPreviewImages()}
       <div className="px-[18px]">
-        <h2 className="font-bold text-[20px] py-[8px]">{collection.title}</h2>
-        <p className="text-slate-500 italic text-[16px] min-h-[75px] content-center">{collection.caption}</p>
+        <h2 className={titleClassName}>{collection.title}</h2>
+        <p className={captionClassName}>{collection.caption}</p>
         <div className={btnClassName} onClick={() => openCollection(collection.id)}>
           View Full Album
         </div>
