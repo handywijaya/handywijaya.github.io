@@ -6,8 +6,7 @@ import PopupMessage from '../../components/PopupMessage';
 import profile from './profile.jpg';
 import gmail from './gmail.svg';
 import linkedIn from './linkedIn.svg';
-import facebook from './facebook.svg';
-import instagram from './instagram.svg';
+import github from './github.png';
 
 const Footer: React.FC = () => {
   const [copyBalloon, setCopyBalloon] = useState<{ shown: boolean, text: string }>({
@@ -69,8 +68,7 @@ const Footer: React.FC = () => {
   }, [toggleCopyBalloon]);
 
   const openLinkedIn = () => window.open('https://www.linkedin.com/in/handy-wijaya-prajitno-a980b0125', '_blank');
-  const openFb = () => window.open('https://www.facebook.com/handy.wijaya.p', '_blank');
-  const openIg = () => window.open('https://www.instagram.com/handywijaya_', '_blank');
+  const openGithub = () => window.open('https://github.com/handywijaya', '_blank');
 
   return (
     <div className="flex justify-between items-center 
@@ -87,8 +85,7 @@ const Footer: React.FC = () => {
           <div className="ic">
             <img src={gmail} alt="gmail" onMouseOver={hoverEmail} onMouseLeave={hoverEmailLeave} onClick={copyEmail} />
             <img src={linkedIn} alt="linkedIn" onClick={openLinkedIn} />
-            <img src={facebook} alt="facebook" onClick={openFb} />
-            <img src={instagram} alt="instagram" onClick={openIg} />
+            <img src={github} alt="github" onClick={openGithub} />
             <div className="absolute text-black">
               <PopupMessage show={copyBalloon.shown} message={copyBalloon.text} bgColor="white" />
             </div>
