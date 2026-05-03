@@ -13,4 +13,5 @@ Check it out at [handywijaya.github.io](https://handywijaya.github.io)!
 1. [Github](https://www.github.com) as the deployment server.
 1. [Flaticon](https://www.flaticon.com) as the icon provider.
 1. Deployment script by [KonardLinkowski](https://gist.github.com/KonradLinkowski/4b2b825d2540c4eecfc5dc1f9e42a87f).
-1. [ChatGPT](https://chatgpt.com/) as my instructor to build the whole project.
+1. [ChatGPT](https://chatgpt.com/) as the instructor to build the whole project.
+1. [Cursor](https://cursor.com/) as main coder for v2 version.
