@@ -9,10 +9,14 @@ import {
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-import Layout from './layouts/Layout'
-import Home from './pages/Home'
-import Collection from './pages/Collection'
-import NotFound from './pages/NotFound'
+import Layout from './versions/v1/layouts/Layout'
+import Home from './versions/v1/pages/Home'
+import Collection from './versions/v1/pages/Collection'
+import NotFound from './versions/v1/pages/NotFound'
+import LayoutV2 from './versions/v2/layouts/Layout'
+import HomeV2 from './versions/v2/pages/Home'
+import FoodAlbumV2 from './versions/v2/pages/FoodAlbum'
+import CollectionDetailV2 from './versions/v2/pages/CollectionDetail'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -21,9 +25,22 @@ root.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path ="/" element={<Layout />}>
+        <Route path="/" element={<LayoutV2 />}>
+          <Route index element={<HomeV2 />} />
+          <Route path="food-album" element={<FoodAlbumV2 />} />
+          <Route
+            path="collections/:collectionName"
+            element={<CollectionDetailV2 />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="/v1" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/collections/:collectionName" element={<Collection />} />
+          <Route
+            path="collections/:collectionName"
+            element={<Collection />}
+          />
+          <Route path="not-found" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
@@ -31,12 +48,6 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
