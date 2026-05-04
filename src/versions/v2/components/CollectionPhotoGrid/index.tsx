@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 
 import { Collection, CollectionImage } from '../../../../shared/interfaces/Collections'
 import ToolTip from '../../../../shared/components/ToolTip'
@@ -19,17 +19,35 @@ const CollectionPhotoGrid: React.FC<Props> = ({ collection }) => {
     y: 0,
     bgColor: 'white',
   })
-  const [lightbox, setLightbox] = useState<{
-    url: string
-    title: string
-  } | null>(null)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const popupTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const openLightbox = (url: string, title: string) => {
-    setLightbox({ url, title })
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index)
   }
 
-  const closeLightbox = () => setLightbox(null)
+  const closeLightbox = () => setLightboxIndex(null)
+
+  const goLightboxPrev = useCallback(() => {
+    setLightboxIndex((idx) => {
+      if (idx === null) return null
+      const n = collection.images.length
+      if (n === 0) return null
+      return idx === 0 ? n - 1 : idx - 1
+    })
+  }, [collection.images.length])
+
+  const goLightboxNext = useCallback(() => {
+    setLightboxIndex((idx) => {
+      if (idx === null) return null
+      const n = collection.images.length
+      if (n === 0) return null
+      return idx === n - 1 ? 0 : idx + 1
+    })
+  }, [collection.images.length])
+
+  const lightboxImage =
+    lightboxIndex !== null ? collection.images[lightboxIndex] : undefined
 
   const showPopup = (caption: string, x: number, y: number, bgColor: string) => {
     setPopup({
@@ -78,7 +96,7 @@ const CollectionPhotoGrid: React.FC<Props> = ({ collection }) => {
               alt={alt}
               onMouseMove={(e) => onFrameHover(e, image.title, bgColor)}
               onMouseOut={onFrameOut}
-              onClick={() => openLightbox(image.url, image.title)}
+              onClick={() => openLightbox(index)}
               className="cursor-pointer self-center rounded-lg shadow-md transition-all duration-125 hover:scale-105"
             />
           )
@@ -92,10 +110,12 @@ const CollectionPhotoGrid: React.FC<Props> = ({ collection }) => {
         bgColor={popup.bgColor}
       />
       <ImagePreviewModal
-        open={lightbox !== null}
-        imageUrl={lightbox?.url ?? null}
-        title={lightbox?.title}
+        open={lightboxIndex !== null}
+        imageUrl={lightboxImage?.url ?? null}
+        title={lightboxImage?.title}
         onClose={closeLightbox}
+        onPrev={goLightboxPrev}
+        onNext={goLightboxNext}
       />
     </>
   )
