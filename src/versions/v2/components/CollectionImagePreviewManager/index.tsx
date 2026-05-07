@@ -117,14 +117,6 @@ const CollectionImagePreviewManager: React.FC<Props> = ({ images, children }) =>
     setSlideshowStatus('playing')
   }, [images, lightboxIndex])
 
-  const stopSlideshow = useCallback(() => {
-    setSlideshowStatus('stopped')
-    setFirstSlideDelayPending(false)
-    setPendingAutoAdvance(false)
-    clearSlideshowTimer()
-    setLightboxIndex(null)
-  }, [clearSlideshowTimer])
-
   useEffect(() => {
     if (slideshowStatus !== 'playing' || lightboxIndex === null || !images.length || pendingAutoAdvance) {
       return
