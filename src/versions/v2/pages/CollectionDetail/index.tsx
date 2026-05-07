@@ -5,6 +5,7 @@ import cn from 'classnames'
 import { Collection as CollectionModel } from '../../../../shared/interfaces/Collections'
 import Constant from '../../../../shared/utils/const'
 import CollectionPhotoGrid from '../../components/CollectionPhotoGrid'
+import CollectionImagePreviewManager from '../../components/CollectionImagePreviewManager'
 import { V2_HOME } from '../../utils/paths'
 
 const CollectionDetail: React.FC = () => {
@@ -35,43 +36,59 @@ const CollectionDetail: React.FC = () => {
   return (
     <div className="flex flex-1 flex-col px-5 py-8 md:px-8">
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-8 flex flex-wrap items-center gap-3">
-          <Link
-            to={V2_HOME}
-            className="rounded-full bg-neutral-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-neutral-800"
-          >
-            ← Home
-          </Link>
-        </div>
+        <CollectionImagePreviewManager images={collection.images}>
+          {({ slideshowStatus, onImageClick, onStartSlideshow }) => (
+            <>
+              <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
+                <Link
+                  to={V2_HOME}
+                  className="rounded-full bg-neutral-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-neutral-800"
+                >
+                  ← Home
+                </Link>
+                {slideshowStatus === 'stopped' && (
+                  <button
+                    type="button"
+                    onClick={onStartSlideshow}
+                    disabled={collection.images.length === 0}
+                    className="rounded-full bg-neutral-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:bg-neutral-400"
+                  >
+                    Start slideshow
+                  </button>
+                )}
+              </div>
 
-        {/* Same per-album radial gradient as classic Collection page (see _theme.scss .Theme-{id}) */}
-        <div
-          className={cn(
-            '-mx-5 overflow-hidden rounded-3xl px-4 py-8 sm:px-6 md:-mx-8 md:px-10',
-            `Theme-${collection.id}`
+              {/* Same per-album radial gradient as classic Collection page (see _theme.scss .Theme-{id}) */}
+              <div
+                className={cn(
+                  '-mx-5 overflow-hidden rounded-3xl px-4 py-8 sm:px-6 md:-mx-8 md:px-10',
+                  `Theme-${collection.id}`
+                )}
+              >
+                <header className="mb-10 max-w-3xl">
+                  <h1
+                    className={cn(
+                      'text-3xl font-bold tracking-tight md:text-4xl',
+                      `Theme-${collection.id}-title`
+                    )}
+                  >
+                    {title}
+                  </h1>
+                  <p
+                    className={cn(
+                      'mt-3 text-sm leading-relaxed md:text-base',
+                      `Theme-${collection.id}-caption`
+                    )}
+                  >
+                    {description}
+                  </p>
+                </header>
+
+                <CollectionPhotoGrid collection={collection} onImageClick={onImageClick} />
+              </div>
+            </>
           )}
-        >
-          <header className="mb-10 max-w-3xl">
-            <h1
-              className={cn(
-                'text-3xl font-bold tracking-tight md:text-4xl',
-                `Theme-${collection.id}-title`
-              )}
-            >
-              {title}
-            </h1>
-            <p
-              className={cn(
-                'mt-3 text-sm leading-relaxed md:text-base',
-                `Theme-${collection.id}-caption`
-              )}
-            >
-              {description}
-            </p>
-          </header>
-
-          <CollectionPhotoGrid collection={collection} />
-        </div>
+        </CollectionImagePreviewManager>
 
         <div className="mt-10 flex justify-end">
           <button
