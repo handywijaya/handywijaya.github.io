@@ -27,10 +27,14 @@ const SlideshowImagePreviewModal: React.FC<SlideshowImagePreviewModalProps> = ({
   onPrev,
   onNext,
 }) => {
+  const CROSSFADE_MS = 500
   const currentImgRef = useRef<HTMLImageElement>(null)
   const [imageLoading, setImageLoading] = useState(true)
   const [currentImageUrl, setCurrentImageUrl] = useState<string | null>(null)
   const [previousImageUrl, setPreviousImageUrl] = useState<string | null>(null)
+  const [currentImageVisible, setCurrentImageVisible] = useState(false)
+  const enterRafRef = useRef<number | null>(null)
+  const fallbackRevealTimerRef = useRef<number | null>(null)
 
   useLayoutEffect(() => {
     if (!open) return
@@ -39,10 +43,12 @@ const SlideshowImagePreviewModal: React.FC<SlideshowImagePreviewModalProps> = ({
       setCurrentImageUrl(null)
       setPreviousImageUrl(null)
       setImageLoading(false)
+      setCurrentImageVisible(false)
       return
     }
 
     setImageLoading(true)
+    setCurrentImageVisible(false)
     setCurrentImageUrl((prev) => {
       if (!prev || prev === imageUrl) {
         return imageUrl
@@ -62,6 +68,18 @@ const SlideshowImagePreviewModal: React.FC<SlideshowImagePreviewModalProps> = ({
     }
 
     setImageLoading(true)
+
+    // Even if the browser delays image events, ensure fade-in still starts.
+    fallbackRevealTimerRef.current = window.setTimeout(() => {
+      setCurrentImageVisible(true)
+    }, 160)
+
+    return () => {
+      if (fallbackRevealTimerRef.current !== null) {
+        window.clearTimeout(fallbackRevealTimerRef.current)
+        fallbackRevealTimerRef.current = null
+      }
+    }
   }, [open, currentImageUrl])
 
   useEffect(() => {
@@ -69,10 +87,24 @@ const SlideshowImagePreviewModal: React.FC<SlideshowImagePreviewModalProps> = ({
 
     const timeoutId = window.setTimeout(() => {
       setPreviousImageUrl(null)
-    }, 450)
+    }, CROSSFADE_MS)
 
     return () => window.clearTimeout(timeoutId)
-  }, [imageLoading, previousImageUrl])
+  }, [CROSSFADE_MS, imageLoading, previousImageUrl])
+
+  useEffect(() => {
+    if (!open) return
+    return () => {
+      if (enterRafRef.current !== null) {
+        window.cancelAnimationFrame(enterRafRef.current)
+        enterRafRef.current = null
+      }
+      if (fallbackRevealTimerRef.current !== null) {
+        window.clearTimeout(fallbackRevealTimerRef.current)
+        fallbackRevealTimerRef.current = null
+      }
+    }
+  }, [open])
 
   useEffect(() => {
     if (!open) return
@@ -241,10 +273,19 @@ const SlideshowImagePreviewModal: React.FC<SlideshowImagePreviewModalProps> = ({
             src={currentImageUrl}
             alt={title || 'Full size'}
             className={`max-h-[85vh] w-auto max-w-full select-none object-contain shadow-2xl transition-all duration-500 ease-out ${
-              imageLoading ? 'scale-[0.99] opacity-0' : 'scale-100 opacity-100'
+              currentImageVisible ? 'scale-100 opacity-100' : 'scale-[0.99] opacity-0'
             }`}
             draggable={false}
-            onLoad={() => setImageLoading(false)}
+            onLoad={() => {
+              setImageLoading(false)
+              if (enterRafRef.current !== null) {
+                window.cancelAnimationFrame(enterRafRef.current)
+              }
+              // Force at least one frame in hidden state before reveal for cached images.
+              enterRafRef.current = window.requestAnimationFrame(() => {
+                setCurrentImageVisible(true)
+              })
+            }}
             onError={() => setImageLoading(false)}
           />
         </div>
