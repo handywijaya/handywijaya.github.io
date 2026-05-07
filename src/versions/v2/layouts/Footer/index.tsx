@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer id="site-footer" className="mt-auto bg-[#f8f8f6]">
-      <div className="mx-auto max-w-6xl px-5 py-3 md:px-8">
+      <div className="relative mx-auto max-w-6xl px-5 py-3 md:px-8">
         <div className="flex flex-col items-center gap-3 md:flex-row md:items-center md:gap-4">
           <div className="relative shrink-0">
             <div
@@ -123,6 +123,9 @@ const Footer: React.FC = () => {
             </p>
           </div>
         </div>
+        <span className="pointer-events-none absolute bottom-2 right-5 text-[9px] text-neutral-400 md:right-8 md:text-[10px]">
+          v1.0.0
+        </span>
       </div>
     </footer>
   )
