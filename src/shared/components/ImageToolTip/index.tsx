@@ -52,7 +52,7 @@ const ImageToolTip: React.FC<ImageToolTipProps> = ({
             '[&_p]:[text-shadow:0_1px_2px_rgba(0,0,0,1),0_0_14px_rgba(0,0,0,0.85),0_0_1px_rgba(0,0,0,1)]',
           )}
         >
-          <p className="whitespace-pre-line text-left font-sans text-[0.9375rem] font-semibold leading-snug text-white sm:text-base">
+          <p className="whitespace-pre-line text-left font-sans text-xs font-semibold leading-snug text-white sm:text-sm">
             {caption}
           </p>
         </div>
