@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import './_styles.css'
 
 import PopupMessage from '../../../../shared/components/PopupMessage'
+import Constant from '../../../../shared/utils/const'
 
 import profile from '../../../../shared/assets/footer/profile.jpg'
 import gmail from '../../../../shared/assets/footer/gmail.svg'
@@ -124,7 +125,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <span className="pointer-events-none absolute bottom-2 right-5 text-[9px] text-neutral-400 md:right-8 md:text-[10px]">
-          v1.0.0
+          v{Constant.VERSION}
         </span>
       </div>
     </footer>

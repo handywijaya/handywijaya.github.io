@@ -4,6 +4,8 @@ import '../../_theme.scss'
 class Constant {
   public static readonly BASE_TITLE:string = "My Travel Album"
 
+  public static readonly VERSION: string = "2.0.0"
+
   public static readonly COLLECTIONS:Collections = {
     "singapore-malaysia-2024": {
       id: 'singapore-malaysia-2024',
