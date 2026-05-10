@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
+import cn from 'classnames'
 
 import { Collection, CollectionImageType } from '../../../../shared/interfaces/Collections'
 import { v2CollectionPath } from '../../utils/paths'
@@ -24,12 +25,21 @@ const AlbumPreviewCard: React.FC<Props> = ({ collection }) => {
     navigate(v2CollectionPath(collection.id))
   }
 
+  // Per-album theme classes are defined in src/_theme.scss
+  // (-preview = base bg, -title / -caption = themed text, -button = themed CTA)
+  const theme = `Theme-${collection.id}`
+
   return (
-    <article className="flex w-full max-w-[320px] flex-col gap-4">
+    <article
+      className={cn(
+        'flex w-full max-w-[320px] flex-col overflow-hidden rounded-3xl shadow-md ring-1 ring-black/5',
+        `${theme}-preview`
+      )}
+    >
       <button
         type="button"
         onClick={goToAlbum}
-        className="group relative block w-full cursor-pointer overflow-hidden rounded-3xl border-0 bg-transparent p-0 text-left shadow-md ring-1 ring-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
+        className="group relative block w-full cursor-pointer border-0 bg-transparent p-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
         aria-label={`View full album: ${collection.titleV2}`}
       >
         {/* Same indices & sizing rules as src/components/PreviewAlbum (previewImageIdx, LANDSCAPE vs PORTRAIT) */}
@@ -67,7 +77,12 @@ const AlbumPreviewCard: React.FC<Props> = ({ collection }) => {
             aria-hidden
           >
             <div className="absolute inset-0 bg-black/45" />
-            <span className="relative rounded-xl bg-white px-6 py-3 text-sm font-bold text-neutral-900 shadow-md">
+            <span
+              className={cn(
+                'relative rounded-xl px-6 py-3 text-sm font-bold shadow-md',
+                `${theme}-button`
+              )}
+            >
               View Full Album
             </span>
           </div>
@@ -79,9 +94,9 @@ const AlbumPreviewCard: React.FC<Props> = ({ collection }) => {
           ) : null}
         </div>
       </button>
-      <div className="px-1">
-        <h2 className="text-xl font-bold text-neutral-900">{title}</h2>
-        <p className="mt-2 text-sm leading-relaxed text-neutral-500">
+      <div className="px-5 py-4">
+        <h2 className={cn('text-xl font-bold', `${theme}-title`)}>{title}</h2>
+        <p className={cn('mt-2 text-sm leading-relaxed', `${theme}-caption`)}>
           {description}
         </p>
       </div>
