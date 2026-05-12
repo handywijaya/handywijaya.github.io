@@ -12,14 +12,9 @@
     <link rel="manifest" href="/manifest.json" />
     <title>My Travel Album</title>
     <link rel="stylesheet" href="/index.css" />
+    <!-- no_onload: Router sends path per navigation (HashRouter paths live in the hash). -->
     <script>
-      window.goatcounter = {no_onload: true}
-  
-      window.addEventListener('hashchange', function(e) {
-          window.goatcounter.count({
-              path: location.pathname + location.search + location.hash,
-          })
-      })
+      window.goatcounter = { no_onload: true };
     </script>
     <script
       data-goatcounter="https://handywijaya.goatcounter.com/count"

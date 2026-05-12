@@ -17,6 +17,7 @@ import LayoutV2 from './versions/v2/layouts/Layout'
 import HomeV2 from './versions/v2/pages/Home'
 import FoodAlbumV2 from './versions/v2/pages/FoodAlbum'
 import CollectionDetailV2 from './versions/v2/pages/CollectionDetail'
+import GoatCounterTracker from './GoatCounterTracker'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,6 +25,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Router>
+      <GoatCounterTracker />
       <Routes>
         <Route path="/" element={<LayoutV2 />}>
           <Route index element={<HomeV2 />} />
