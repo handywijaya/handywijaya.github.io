@@ -19,6 +19,9 @@ import FoodAlbumV2 from './versions/v2/pages/FoodAlbum'
 import CollectionDetailV2 from './versions/v2/pages/CollectionDetail'
 import GoatCounterTracker from './GoatCounterTracker'
 
+// Split out: this page pulls in pdf.js, which the album pages never need.
+const CcBillToCsvV2 = React.lazy(() => import('./versions/v2/pages/CcBillToCsv'))
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -30,6 +33,14 @@ root.render(
         <Route path="/" element={<LayoutV2 />}>
           <Route index element={<HomeV2 />} />
           <Route path="food-album" element={<FoodAlbumV2 />} />
+          <Route
+            path="cc-bill-to-csv"
+            element={
+              <React.Suspense fallback={null}>
+                <CcBillToCsvV2 />
+              </React.Suspense>
+            }
+          />
           <Route
             path="collections/:collectionName"
             element={<CollectionDetailV2 />}
