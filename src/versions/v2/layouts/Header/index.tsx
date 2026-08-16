@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { V2_HOME, v2FoodAlbumPath } from '../../utils/paths'
+import {
+  V2_HOME,
+  v2CcBillToCsvPath,
+  v2FoodAlbumPath
+} from '../../utils/paths'
 
 const LOGO_SRC = `${process.env.PUBLIC_URL}/logo-128.png`
 
@@ -41,6 +45,12 @@ const Header: React.FC = () => (
           className="text-sm font-medium text-neutral-800 no-underline transition-colors hover:text-black md:text-base"
         >
           Food Album
+        </Link>
+        <Link
+          to={v2CcBillToCsvPath}
+          className="hidden text-sm font-medium text-neutral-800 no-underline transition-colors hover:text-black sm:inline md:text-base"
+        >
+          Bill to CSV
         </Link>
         <button
           type="button"

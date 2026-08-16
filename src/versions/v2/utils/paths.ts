@@ -3,5 +3,7 @@ export const V2_HOME = '/'
 
 export const v2FoodAlbumPath = '/food-album'
 
+export const v2CcBillToCsvPath = '/cc-bill-to-csv'
+
 export const v2CollectionPath = (collectionId: string) =>
   `/collections/${collectionId}`
