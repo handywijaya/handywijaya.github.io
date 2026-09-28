@@ -30,6 +30,21 @@ const isPasswordException = (error: unknown): boolean =>
   error !== null &&
   (error as { name?: string }).name === 'PasswordException'
 
+// Horizontal text: the x-axis basis vector (a, b) lies along the page's x-axis,
+// so the vertical component b is negligible relative to a.
+// The 0.1 tolerance keeps text tilted up to ~6°.
+const isHorizontal = (item: PdfTextItem): boolean => {
+  const [a, b] = item.transform
+  return Math.abs(b) < Math.abs(a) * 0.1
+}
+
+// getTextContent() can also return marked-content items with no str/transform.
+const isTextItem = (item: unknown): item is PdfTextItem =>
+  typeof item === 'object' &&
+  item !== null &&
+  'str' in item &&
+  Array.isArray((item as PdfTextItem).transform)
+
 /**
  * Decrypt `bytes` with `password` and return the text of every page.
  *
@@ -73,7 +88,12 @@ export const extractPdfText = async (
       const page = await doc.getPage(pageNumber)
       // eslint-disable-next-line no-await-in-loop
       const content = await page.getTextContent()
-      pages.push(itemsToLines(content.items as PdfTextItem[]).join('\n'))
+
+      const horizontalItems = (content.items as PdfTextItem[]).filter(
+        (item): item is PdfTextItem => isTextItem(item) && isHorizontal(item)
+      )
+
+      pages.push(itemsToLines(horizontalItems).join('\n'))
       page.cleanup()
     }
     return pages.join('\n')
