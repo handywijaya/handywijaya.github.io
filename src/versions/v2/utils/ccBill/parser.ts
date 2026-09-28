@@ -133,6 +133,7 @@ export const parseStatementText = (text: string): Transaction[] => {
   const lines = text.split('\n', MAX_LINES)
   lines.forEach((rawLine) => {
     const line = rawLine.replace(/\r$/, '')
+    console.log('line', line)
     if (line.length > MAX_LINE_LENGTH) return
 
     const twoDate = TWO_DATE_RE.exec(line)
